@@ -1,0 +1,11 @@
+<div *ngIf="list?.length === 0">
+  <span #empty>
+    <ng-content select="[empty]">
+      <p>No hay contenido para mostrar</p>
+    </ng-content>
+  </span>
+</div>
+
+<div *ngIf="list?.length > 0" class="list-container">
+  <ng-content select="[content]"></ng-content>
+</div>

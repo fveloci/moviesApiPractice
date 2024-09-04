@@ -1,0 +1,23 @@
+<h2 style="margin-top:50px">{{title}}</h2>
+<app-generic-list [list]="movies">
+  <div empty>Mensaje personalizado para contenido <b>VACIO</b></div>
+  <div class="movie-list-container" content>
+
+    <mat-card class="example-card" *ngFor="let movie of movies; let index = index">
+      <mat-card-header>
+        <mat-card-title [routerLink]="'/pelicula/' + movie.id">{{movie.title}}</mat-card-title>
+      </mat-card-header>
+      <img mat-card-image src={{movie.poster}} alt="Photo" [routerLink]="'/pelicula/' + movie.id">
+      <mat-card-content>
+      </mat-card-content>
+      <app-authorized [role]="'admin'">
+        <ng-container authorized>
+          <mat-card-actions>
+            <button mat-button [routerLink]="'/peliculas/editar/' + movie.id">EDITAR</button>
+            <button mat-button (click)="delete(movie.id)">REMOVER</button>
+          </mat-card-actions>
+        </ng-container>
+      </app-authorized>      
+    </mat-card>
+  </div>
+</app-generic-list>

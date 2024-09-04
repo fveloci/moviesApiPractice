@@ -1,0 +1,12 @@
+<h2>Crear Pelicula</h2>
+
+@if(notSelectedCinemas) {
+    <app-movie-form (onSubmit)="saveChanges($event)" 
+        [notSelectedCinemas]="notSelectedCinemas" 
+        [notSelectedGenres]="notSelectedGenres"
+        [errors]="errors">        
+    </app-movie-form>
+} @else {
+    <mat-spinner></mat-spinner>
+}
+

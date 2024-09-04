@@ -1,0 +1,8 @@
+<h2>Editar actor/actriz</h2>
+
+@if (model) {
+    <app-actors-form [model]="model" (onSubmit)="saveChanges($event)"></app-actors-form>
+} @else {
+    <mat-spinner></mat-spinner>
+}
+

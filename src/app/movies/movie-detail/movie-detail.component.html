@@ -1,0 +1,66 @@
+@if(movie) {
+    <div style="display: flex;">
+        <div>
+            <h2>{{movie.title}} ({{releaseDate.getFullYear()}})</h2>
+
+            <mat-chip-listbox>
+                <mat-chip 
+                    [routerLink]="['/peliculas/buscar']"
+                    [queryParams]="{genreId: genre.id}"
+                    *ngFor="let genre of movie.genres">
+                    {{genre.name}}
+                </mat-chip>
+            </mat-chip-listbox>
+            | {{ releaseDate.toDateString() }} | Promedio: {{movie.averageVote}} | Tu voto:
+            <app-rating (rated)="rated($event)" [selectedRating]="movie.userVote"></app-rating>
+
+            <div style="display: flex;">
+                <span style="display: inline-block; margin-right: 1rem;">
+                    <img [src]="movie.poster" style="width: 225px; height: 315px;">
+                </span>
+                @if(movie.trailer) {
+                    <iframe 
+                        width="560" 
+                        height="315" 
+                        [src]="trailerURL" 
+                        title="YouTube video player" 
+                        frameborder="0" 
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                        referrerpolicy="strict-origin-when-cross-origin" 
+                        allowfullscreen>
+                    </iframe>
+                }
+            </div>
+
+            <div style="margin-top: 1rem;">
+                <h3>Resumen</h3>
+                <div>
+                    <markdown [data]="movie.resume" ngPreserveWhitespaces></markdown>
+                </div>
+            </div>
+
+            <div style="margin-top: 1rem">
+                <h3>Actores</h3>
+                <div style="display: flex; flex-direction: column;">
+                    @for(actor of movie.actors; track actor) {
+                        <div style="margin-bottom: 2px;">
+                            <img [src]="actor.photo" style="width: 50px; vertical-align: middle;" alt="">
+                            <span style="display: inline-block; width: 200px; margin-left: 1rem;">
+                                {{actor.name}}
+                            </span>
+                            <span style="display: inline-block; width: 45px;">...</span>
+                            <span>{{actor.character}}</span>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+        <div style="padding-left: 1rem; position: relative; width: 100%;" *ngIf="coordinates.length > 0">
+            <h2>En los siguientes cines</h2>
+            <app-map [initialCoordinates]="coordinates" [readOnly]="true"></app-map>
+        </div>
+    </div>
+} @else {
+    <mat-spinner></mat-spinner>
+}
+

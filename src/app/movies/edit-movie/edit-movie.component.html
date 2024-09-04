@@ -1,0 +1,16 @@
+<h2>Editar pelicula</h2>
+
+@if(model) {
+    <app-movie-form 
+        [model]="model" 
+        (onSubmit)="saveChanges($event)"
+        [notSelectedGenres]="notSelectedGenres"
+        [notSelectedCinemas]="notSelectedCinemas"
+        [selectedActors]="selectedActors"
+        [selectedCinemas]="selectedCinemas"
+        [selectedGenres]="selectedGenres">
+    </app-movie-form>
+} @else {
+    <mat-spinner></mat-spinner>
+}
+

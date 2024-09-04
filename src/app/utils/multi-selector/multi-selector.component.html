@@ -1,0 +1,20 @@
+<div class="container">
+    <ul>
+        @for (item of notSelected; track item; let index = $index) {
+            <li (click)="select(item, index)">{{item.value}}</li>
+        }        
+    </ul>
+    <div class="div-buttons">
+        <button type="button" (click)="selectAll()">
+            > >
+        </button>
+        <button type="button" (click)="deselectAll()">
+            < <
+        </button>
+    </div>
+    <ul>
+        @for (item of selected; track item; let index = $index) {
+            <li (click)="unselect(item, index)">{{item.value}}</li>
+        }
+    </ul>
+</div>

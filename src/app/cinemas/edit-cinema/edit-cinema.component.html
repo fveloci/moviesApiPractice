@@ -1,0 +1,7 @@
+<h2>Editar cine</h2>
+
+@if (model) {
+    <app-cinema-form [errors]="errors" (saveChanges)="saveChanges($event)" [model]="model"></app-cinema-form>
+} @else {
+    <mat-spinner></mat-spinner>
+}

@@ -1,0 +1,28 @@
+.movie-list-container {
+    display: flex;
+    flex-direction: row;
+    gap: 30px;
+}
+.movie-container {
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid black;
+
+}
+
+h2 {
+    color: blue;
+}
+
+
+mat-card {
+    width: 100%;
+    max-width: 300px;
+}
+mat-card-header {
+    height: auto;
+    min-height: 70px;
+}
+mat-card-title {
+    text-overflow: ellipsis;
+}

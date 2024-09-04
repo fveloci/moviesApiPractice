@@ -1,0 +1,9 @@
+<h2>Editar Género</h2>
+@if (model) {
+    <app-genre-form 
+    [model]="model"
+    (onSubmit)="saveChanges($event)"
+    [errors]="errors"></app-genre-form>
+} @else {
+    <mat-spinner></mat-spinner>
+}
